@@ -1,0 +1,28 @@
+sqoop import --connect jdbc:mysql://localhost:3306/test --username root --password 0000 --table employee --hive-import --fields-terminated-by ","
+
+sqoop import --connect jdbc:mysql://localhost:3306/test --username root --password 0000 --table employee --target-dir /user/hive/warehouse/pp.db/employee --hive-import --fields-terminated-by ","
+
+sqoop import --connect jdbc:mysql://localhost:3306/test --username root --password 0000 --table employee --hive-import --fields-terminated-by "," --hive-table imprt.employee --where "eid<500" --num-mappers 1
+
+sqoop import-all-tables --connect jdbc:mysql://localhost:3306/test --username root --password 0000
+
+sqoop export --connect jdbc:mysql://localhost:3306/test --username root --password 0000 --table census_table_stage --export-dir /user/hive/warehouse/pp.db/census_table_stage --input-fields-terminated-by ","
+
+sqoop export --connect jdbc:mysql://localhost:3306/test --username root --password 0000 --table census_table_stage --export-dir /user/hive/warehouse/pp.db/census_table_stage --input-fields-terminated-by "," --columns "display_id,employment_type,edu_qualification,marital_status,job_type,working_hours_per_week,country,salary" --num-mappers 1
+
+sqoop export --connect jdbc:mysql://localhost:3306/test --username root --password 0000 --table census_table --export-dir /user/hive/warehouse/pp.db/census_table_stage --input-fields-terminated-by "," --columns "display_id,employment_type,edu_qualification,marital_status,job_type,working_hours_per_week,country,salary" --num-mappers 1
+
+sqoop export --connect jdbc:mysql://localhost:3306/test --username root --password 0000 --table census_table --export-dir /user/hive/warehouse/pp.db/census_table --input-fields-terminated-by "\t" --columns "display_id,employment_type,edu_qualification,marital_status,job_type,working_hours_per_week,country,salary" --num-mappers 1
+
+** direct and compress are creating issues **
+** maybe due to windows permission **
+** export did not worked ***
+
+
+Below is an example of import from https://acadgild.com/blog/sqoop-import-data-from-mysql-to-hive
+
+sqoop import –-connect jdbc:mysql://localhost:3306/test --username root –-split-by EmpId –-columns EmpId,EmpName,City –-table company1 –-target-dir /myhive –-hive-import –-create-hive-table –-hive-table default.Company1Hive --num-mappers 1
+
+Not working commmands :
+
+sqoop import --connect jdbc:mysql://localhost:3306/test --username root --password 0000 --table employee --hive-import --fields-terminated-by "," --hive-table imprt.employee --num-mappers 2 --direct --compress
