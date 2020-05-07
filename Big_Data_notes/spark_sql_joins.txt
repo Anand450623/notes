@@ -1,0 +1,29 @@
+case class Sale(cid:Int,cname:String,email:String,date:String,pid:Int,pname:String,price:Int)
+
+case class Customer(cid:Int,cname:String,address:String)
+
+val cust = sc.textFile("C:/hadoop_input_files/301/SQLDatasets/Customer.csv")
+val sale = sc.textFile("C:/hadoop_input_files/301/SQLDatasets/SalesData.csv")
+
+val saledf = sale.map(_.split(",")).map(c =>Sale(c(0).toInt,c(1),c(2),c(3),c(4).toInt,c(5),c(6).toInt)).toDF()
+
+saledf.show()
+saledf.createOrReplaceTempView("sale_table");
+
+val data1 = spark.sql("select cname,AVG(price) as avg from sale_table group by cname");
+data1.show()
+data1.write.parquet("C:/hadoop_input_files/out")
+
+val data2 = spark.sql("select pname, count(*) as  cnt from sale_table group by pname limit 1");
+data2.show()
+data2.write.json("C:/hadoop_input_files/outjson")
+
+val custdf = cust.map(_.split(",")).map(c=>Customer(c(0).toInt,c(1),c(2))).toDF()
+custdf.show()
+custdf.createOrReplaceTempView("customer_table");
+
+val data3 = spark.sql("select customer_table.cname, count(*) as cnt from sale_table join customer_table on sale_table.cid=customer_table.cid where customer_table.address='Bellevue' group by customer_table.cname");
+data3.show()
+
+val data4 = spark.sql("select customer_table.address, sum(price) as sum from sale_table join customer_table on sale_table.cid=customer_table.cid group by customer_table.address");
+data4.show()

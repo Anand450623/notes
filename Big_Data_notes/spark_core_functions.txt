@@ -1,0 +1,29 @@
+#1
+
+var input = sc.textFile("C:/hadoop_input_files/301/WorldOneCensusData.txt")
+var input_split = input.map(_.split("\t"))
+input_split.count
+
+val marriage_status = input_split.map(r=>r(3))
+val unmarried_count = marriage_status.filter(_.startsWith("Unmarried"))
+unmarried_count.count
+
+#2
+
+val sal = input_split.map(r=>r(7))
+sal.distinct.collect
+val sal_mapped = sal.map(r=>if(r=="<=25K" || r=="<=35K" || r=="<=30K") "0" else "1")
+sal_mapped.filter(_.equals("0")).count
+sal_mapped.filter(_.equals("1")).count
+
+#3
+
+val input_map = input_split.map(r=>r(6))
+val freq = input_map.map(r=>(r,1))
+freq.reduceByKey((a,b)=>a+b).collect
+
+#4
+
+val job = input_split.map(r=>r(4)).map(r=>(r,1)).reduceByKey((a,b)=>a+b)
+						OR
+input_split.map(r=>r(4)).map(r=>(r,1)).reduceByKey(_+_).collect

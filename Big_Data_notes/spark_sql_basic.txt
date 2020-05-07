@@ -1,0 +1,30 @@
+val Car_Info = sc.textFile("C:/hadoop_input_files/301/SQLDatasets/ArisconnDataset.txt");
+
+val header = Car_Info.first()
+println(header)
+
+case class Cars(sensorid: String,carid: String,latitude:Double,longitude:Double,engine_speed:Int,accelerator_pedal_position:Int,vehicle_speed:Int,torque_at_transmission:Int,fuel_level:Double,TypeOfMessage:String,timestamp:Double)
+
+val DF = Car_Info.filter(c => c!=header).map(_.split(",")).map(c => Cars(c(0),c(1),c(2).toDouble,c(3).toDouble,c(4).toInt,c(5).toInt,c(6).toInt,c(7).toInt,c(8).toDouble,c(9),c(10).toDouble)).toDF()
+
+DF.createOrReplaceTempView("cars");
+
+val valrecords= spark.sql("SELECT sensorid,carid,latitude,longitude,vehicle_speed,TypeOfMessage FROM cars WHERE sensorid Like 'SEN_%' AND carid Like 'CAR_%' AND sensorid!='sensorID'");
+
+valrecords.show()
+
+
+** not working **
+
+val sqlContext = new org.apache.spark.sql.SQLContext(sc);
+
+DF.registerTempTable("cars");
+
+val valrecords= sqlContext.sql("SELECT sensorid,carid,latitude,longitude,vehicle_speed,TypeOfMessage FROM cars WHERE sensorid Like 'SEN_%' AND carid Like 'CAR_%' AND sensorid!='sensorID'");
+
+
+** some reference links **
+
+https://stackoverflow.com/questions/51813274/spark-sql-vs-sqlcontext
+
+https://www.hadoopinrealworld.com/sparksession-vs-sparkcontext-vs-sqlcontext-vs-hivecontext/
