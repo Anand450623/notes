@@ -1,0 +1,132 @@
+The child elements can inherit the style properties of the parent element but the styling is not always inherited by child elements.
+Some of the CSS style properties have “inherit” value associated with them. For example, Font and Text properties are inherited but the border and margin properties are not inherited.
+
+If the “inherit” value is associated with the property then styling is also inherited. Otherwise, styling is not inherited.
+If we want the styling which is not inherited by default to be inherited then we have to specify inherit to the style attribute explicitly.
+
+Example:
+border: inherit
+
+We use contextual selectors when we want selectors to match elements that appear in a context.
+Context is referred to as a parent/child relationship between HTML elements.
+While writing the style rules using contextual selectors, the parent and child element should be separated using space.
+
+If we have a requirement to apply the same style to all the headings like h1, h2, etc. on the webpage.
+We may not like to repeat the same style code for all headings.
+We may use grouping options in such scenarios and use style code only once.
+
+Example:
+
+h1,h2,h3
+{
+	color:red;
+}
+
+initial indicates that the color property should be assigned with default value black.
+<style="color: initial">
+
+The CSS reset is a CSS file which is available open-source.
+CSS reset file contains minified set of CSS rules that reset the styling of HTML elements to a consistent base. CSS reset helps in nullifying browser display differences.
+There are many open-source free reset style sheets available which can be downloaded through the internet. Ex: Eric Meyer’s “Reset CSS ” 2.0.
+
+Normalize.css is a customizable CSS file that makes browsers render all elements more consistently and in line with modern standards.
+Normalize.css preserves the basic styling which saves the time of recreating them and nullifies the styling which is inconsistent across browsers.
+Different versions of normalize.css files are available open source.
+
+If any styling is followed by !important. It is given the highest priority. !important override all previous styling and give this the highest priority.
+If !important is specified more than once they fall back to normal cascading rules. Reader’s style sheet can win over the author’s style sheet only by specifying !important.
+
+Priority order of css:
+
+Inline
+Internal and/or import
+External
+Browser default
+
+Internal priorities
+
+If multiple styles are specified for the same element within the style sheet then the priority is as below.
+Id
+Class
+Element
+
+In addition to internal priority specificity also counts. A Specificity is a 3-digit number.
+
+For example, if specificity is 123 then,
+1 refers to the number of id selectors
+2 refers to the number of class selectors
+3 refers to the number of elements
+
+Highest specificity always wins.
+
+Gentle Note: id selectors would have the highest priority than class selectors and element selectors.
+
+Background-properties:
+
+background-clip can be used to control how far a background-image or color can be extended beyond its content or padding.
+background-repeat property alone cannot be used to specify background-image. background-repeat can be used to avoid repetition of background-image across x and y-axis.
+The background-origin property specifies until where to paint the background: across the whole element, inside the border, or inside the padding.
+
+Text-properties:
+
+capitalize would render the first letter of each word in uppercase.
+Uppercase will render all the letters in capitals.
+Lowercase will render all the letters in lowercase.
+camelcase is not a valid value for the text-transform property.
+
+Margin-properties:
+
+CSS has many shorthand properties. The short hand properties in CSS can take from 1 to 4 values. The order of these values are top, right, bottom and left
+
+If 1 value is specified then the same value is considered for all other 3 values.
+If 2 values are specified then the first value is considered as top and bottom values and the second value is considered as left and right values.
+If 3 values are specified then the first value is considered as the top value and the second value is considered as left and right values and the third value is considered as bottom value.
+
+border-style:inset outset
+
+Box-model in css:
+
+When we set the width and height property for an HTML element using CSS, we are actually setting the width and height of the content.
+The complete width and height of an element are calculated by including the padding, border, and margin of the element as well.
+Total element width = width + left padding + right padding + left border + right border + left margin + right margin.
+Total element height = height + top padding + bottom padding + top border + bottom border + top margin + bottom margin.
+ 
+Float and Clear property:
+
+Float property specifies whether an element should float or not, where text and inline elements will wrap around it.
+
+The property can take 3 values: left, right and none.
+
+float property
+
+Description
+
+left : Indicates that element should float on the left of its containing block
+right : Indicates that element should float on the right of its containing block
+none : Indicates that the element will not float. Default value
+
+Clear property specifies that no elements should float on a particular element.
+The property can take 4 values: left, right, both and none.
+
+clear property
+
+Description
+
+left : Indicates that floating elements are not allowed on the left side
+right : Indicates that floating elements are not allowed on the right side
+both : Indicates that floating elements are not allowed on both the sides
+none : Indicates floating elements are allowed on both sides. Default value
+
+CSS pseudo-class is a keyword which can be applied to selectors. Pseudo-classes specifies the state of the element to be selected. There are many variants of pseudo-classes.
+
+Example:
+
+:hover,:link etc...
+
+
+The indeterminate state can be used when there is a parent checkbox and 2 or more child checkbox's associated with the parent checkbox.
+When all the child checkboxes are checked, the state of the parent checkbox is checked. When none of the child checkbox's are checked then the state of parent checkbox is unchecked.
+The state of the parent checkbox is indeterminate when few of its child checkbox's are checked and few are unchecked.
+The indeterminate state can be set using JavaScript, not with HTML.
+
+display:inline and list-style-type:none

@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title>Indeterminate  state</title>
+		<style>
+			ul
+			{
+				list-style:none;
+				margin: 5px 20px;
+			}
+			input[type=checkbox]:indeterminate +label
+			{
+				color:red;
+				font-style:normal;
+			}
+		</style>
+		<script>
+			function init()
+			{
+				var checkbox = document.getElementById("distinction");
+				//document.write(checkbox.value)
+				checkbox.indeterminate  = true;
+			}
+		</script>
+	</head>
+	<body onload="init()">
+		<ul>	
+			<li>
+				<input type = "checkbox" name="students" id="students">
+				<label for="students">Students</label>
+				<ul>
+					<li>
+						<input type = "checkbox" name="fc" id ="fc">
+						<label for = "fc"">First-class</label>
+					</li>
+					<li>
+						<input type = "checkbox" name="distinction" id ="distinction">
+						<label for = "distinction"">Distinction</label>
+						<ul>
+							<li>
+								<input type = "checkbox" name="upperdistinction" id ="upperdistinction" checked>
+								<label for = "upperdistinction"">Above 70</label>
+							</li>
+							<li>
+								<input type = "checkbox" name="lowerdistinction" id ="lowerdistinction">
+								<label for = "lowerdistinction"">Above 80</label>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</body>
+</html>
+	</body>
+</html>

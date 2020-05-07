@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<style>
+			body 
+			{
+				padding-top: 10px;
+			}
+			#test
+			{
+				color:rgb(100,100,100);
+			}
+		</style>
+	</head>
+	<body class="container-fluid">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3>History</h3>
+				<h1 id="test">Number  of elements : </h1>
+			</div>
+			<div class="panel-body">
+                <input
+                  type="button"
+                  value="<< Previous"
+                  class="btn btn-warning"
+                  onclick="window.history.back()"
+                />
+                <input
+                  type="button"
+                  value="Next >>"
+                  class="btn btn-success"
+                  onclick="window.history.forward()"
+                />
+            </div>
+		</div>
+		<script>
+			
+			//window.history.go(-2);
+			var x = history.length;
+			var y = document.getElementById("test");
+			document.write(y.innerHTML);
+			y.innerHTML += x;
+		</script>
+	</body>
+</html>

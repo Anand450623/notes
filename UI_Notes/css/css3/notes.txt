@@ -1,0 +1,104 @@
+Attribute Selector  Description
+
+a[attribute]	Selects all A elements with attribute.
+a[attribute=value]	Selects all A elements where the value of the attribute is equal to value.
+a[attribute^=value]	Selects all A elements where the value of attribute starts with value.
+a[attribute$=value]	Selects all A elements where the value of attribute ends with value.
+a[attribute*=value]	Selects all A elements where the value of the attribute contains the value.
+
+Border property adds a sharp border to our HTML element.
+If we need rounded corners for our border, we can achieve the requirement using the border-radius property of CSS3.
+We can use slashes(“/”) between 2 values to specify elliptical corners.
+Ex : border-radius: 10px/20px; /* horizontal radius/vertical radius */
+
+Border radius is short-hand property. Border radius value can be expressed using px or %. Percentage(%) is used when we want border-radius to be directly correlated with elements width.
+
+border-radius is combinations of below four properties. 
+
+border-top-left: can be used to provide top left radius
+border-top-right: can be used to provide rtop right radius
+border-bottom-left: can be used to provide bottom left radius
+border-bottom-right: can be used to provide bottom right radius.
+
+elliptical border-radius
+
+Parameters of border-radius:
+
+First value => top-left corner
+Second value => top-right corner
+Third value => bottom-right corner
+Fourth value => bottom-left corner
+
+Box-shadow:
+
+Property	Description
+horizontal offset	Positive value creates a shadow to the right.	Negative value creates the shadow to the left
+vertical offset		Positive value creates a shadow to the left.	Negative value creates the shadow to the right.
+spread distance	Optional value.		Positive value expands the shadow in all directions.	Negative value contracts the shadow.
+blur distance	An optional value which decides the percentage of blur effect takes only positive value.
+color	An optional value which specifies the shadow color.
+
+Border Image slice property specifies how to slice the image.
+The image to be added as a border will be divided into 9 sections based on the image slice value of the border-image property.
+Once the image is divided into 9 sections. The corners of the image would be placed at the corners of the element and the edges of the image would be placed at the edges of the element.
+The edges of the image are repeated or scaled based on the border-repeat value.
+
+
+The different font formats are:
+
+EOT: Embedded Open Type. This format was introduced by Microsoft and supported in Internet Explorer Browser 
+OTF / TTF: Open Type Font and TrueType Font is a cross-platform type and includes advanced layout and typographic control features.
+WOFF: Web Open Font Format. Created for usage on the web. Loads faster as they use the compressed version.
+SVG is a vector re-creation of the font. This font can be chosen while developing mobile applications. This format works with Safari 4. and lower versions for iOS.
+
+The web-safe fonts are those fonts which are pre-installed in most of the devices. Garamond is not a web-safe-font whereas san-serif, Helvetica and Verdana header are web-safe-fonts 
+
+
+CSS3 translate() function is used to move an element from one position to another position.
+An element can be moved to the right, left, top, bottom.
+Syntax: translate (x,y) -> moves the element to right by x-value, and y-value down from its current position.
+An element can be moved in only one direction i.e. horizontal/vertical using translateX and translateY functions.
+
+CSS3 scale() function is used to change(increase/decrease) the size of any element.
+Syntax: scale(x,y) -> scales the element width(x-value) & height(y value)
+If only one value is supplied to the scale(value) function, then that value will be considered as both x & y parameters
+
+CSS3 rotate() function is used to rotate an element from its origin point up to a specified angle. The angle is specified in degrees.
+Syntax: rotate(x) -> Rotates the element. 
+If the angle specified is a positive value then the element rotates clockwise. if the angle specified is a negative value then the element rotates anti-clockwise. 
+
+CSS3 skew() function is used to turn/skew any element to any angle.
+The turning/skewing is dependent on the parameters specified for the vertical & horizontal axis.
+Syntax: skew(x,y) -> skews the element from x degrees from the x-axis & y- degrees from the y-axis.
+if the y-axis value is not specified then it has a zero value.
+To skew an element across a single axis, we can use skewX() and skewY() functions.
+
+Summary:
+
+Translate method helps in moving the elements.
+Scale methods help in changing the size of the elements.
+The rotate method helps in rotating the elements.
+The skew method helps in tilting the elements.
+
+If we have a requirement to show the gradual changes in the CSS properties of an element during an interval of time.
+For example, you might want to show an element changing its size in an interval of 2 seconds upon hover of the mouse. We can use the CSS3 transition property.
+
+To add a transition, two things must be specified:
+The CSS property to which the effect should be added.
+The duration of the effect.
+
+Custom function for transition can be defined by specifying four co-ordinates to define a cubic bezier curve.
+The Cubic Bezier curve is defined by 4 points p0, p1, p2, and p3.
+P0 and p3 are start and end of the curve hence they have values 0 and 1 by default. We specify the x and y coordinate values for p1 and p2 to the cubic bezier curve function.
+
+
+steps() timing function enables us to break the transition into steps.
+For example: If I want to transit a square which moves 400px to right on hover in 4 seconds then the square would move 100 pixels to right for every second.
+This function accepts 2 arguments.
+steps(int, start|end)
+The first parameter specifies the number of intervals to which the transition should be broken. This should be a positive number greater than 0.
+If the second parameter value is 'start' then the transition will happen at the beginning of each step.
+If the second parameter value is 'end' then the transition will happen at the end of each step.
+There are 2 pre-defined variants of steps function
+step-start which is equivalent to steps(1, start)
+step-end which is equivalent to steps(1, end)

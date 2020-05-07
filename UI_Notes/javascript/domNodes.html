@@ -1,0 +1,47 @@
+<html>
+<head>
+</head>
+<body>
+	<div id="div1">
+	 <h1 id='heading1' align="center">Hello World</h1>
+	 <p id='para1'>Good luck!</p>
+	</div>
+	<br><input type='button' value='Add Span' onclick='createNew()'>
+	<input type='button' value='Remove para' onclick='removeOld()'>
+    <script>
+        document.write(
+          "<br><br>" + "document.body.parentNode: " + document.body.parentNode
+        );
+        document.write(
+          "<br><br>" + "document.body.childNodes: " + document.body.childNodes
+        );
+        document.write(
+          "<br><br>" + "div1 firstChild: " + document.getElementById("div1").firstChild
+        );
+        document.write(
+          "<br><br>" + "div1 lastChild: " + document.getElementById("div1").lastChild
+        );
+        document.write(
+          "<br><br>" +
+            "heading1 nextSibling: " +
+            document.getElementById("heading1").nextSibling
+        );
+        document.write(
+          "<br><br>" +
+            "para1 previousSibling: " +
+            document.getElementById("para1").previousSibling
+        );
+        
+        function createNew() {
+          var newElement = document.createElement("span");
+          var newTextElement = document.createTextNode("The span is added just now");
+          document.getElementById("div1").appendChild(newElement);
+          document.getElementById("div1").appendChild(newTextElement);
+        }
+        
+        function removeOld() {
+          document.getElementById("div1").removeChild(document.getElementById("para1"));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<head>
+		<style>
+			body {
+				padding-top: 10px;
+			}
+		</style>
+	</head>
+	<body class="container-fluid">
+	    <div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3>JSON object</h3>
+			</div>
+			<div class="panel-body">
+				<p>
+				    <script>
+                        var dataJSON = {
+                          customers: [
+                            { firstName: "Bob", lastName: "Morry" },
+                            { firstName: "Albert", lastName: "Smith" },
+                            { firstName: "Kate", lastName: "Ward" }
+                          ]
+                        };    
+                        document.write(
+                          "JSON string: " + JSON.stringify(dataJSON) + "<br><br>"
+                        );    
+                        var stringJSON = '{"firstName":"Bob", "lastName":"Morry"}';
+                        JSON.parse(stringJSON);    
+                        document.write(
+                          "JSON string: " +
+                            JSON.stringify(JSON.parse(stringJSON)) +
+                            "<br><br>"
+                        );
+                    </script>
+				</p>
+			</div>
+		</div>
+    </body>
+</html>

@@ -1,0 +1,91 @@
+<html>
+ 
+<head>
+    <style>
+        div#maincontent {
+            height: 250px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: left;
+            color: #08438E;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+ 
+        div#heading {
+            text-decoration: bold;
+            text-align: center;
+            margin-top: 80px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: center;
+            color: #08438E;
+            background-color: #CEE2FA;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+ 
+        h2 {
+            padding: 0;
+            margin: 0;
+ 
+        }
+    </style>
+</head>
+ 
+<body>
+    <center>
+        <div id="heading">
+            <h2>Booking Summary</h2>
+        </div>
+        <div id="maincontent">
+            <script>
+                var seats = 4;
+                var costPerTicket = 320;
+                var discount = 10;
+                var totalCost = 0;
+                const percent = 100;
+                var discountedCost;
+                document.write(
+                  "Actual cost per ticket: Rs." + costPerTicket + "<br>"
+                );
+                //Requirement 2 c: Calculating discount based on the number of seats to be booked
+                if (seats > 2 && seats <= 6) {
+                  //document.write('Total number of seats to be booked: '+seats+',&nbsp;');
+                
+                  document.write(
+                    "<br>" +
+                      seats +
+                      " seats are eligible for festive discount!!" +
+                      "<br>"
+                  );
+                  for (index = 1; index <= seats; index++) {
+                    discountedCost =
+                      costPerTicket - (discount / percent) * costPerTicket;
+                    totalCost = totalCost + discountedCost;
+                    document.write(
+                      "<br>" + discount + " % discount!" + " on Ticket " + index
+                    );
+                    discount = discount + 10;
+                  }
+                  document.write(
+                    "<br><br>" + "Amount payable: Rs." + totalCost + "<br>"
+                  );
+                } else if (seats > 6) {
+                  document.write(
+                    "<br>Oops!You cannot book more than 6 tickets!!<br>"
+                  );
+                } else {
+                  //document.write('Total number of seats to be booked: '+seats+',&nbsp;');
+                  totalCost = seats * costPerTicket;
+                  document.write("<br>" + "Total seats: " + seats + "<br>");
+                  document.write("<br>" + "Amount payable: Rs." + totalCost + "<br>");
+                }
+            </script>
+        </div>
+    </center>
+</body>
+ 
+</html>

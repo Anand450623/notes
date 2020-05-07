@@ -1,0 +1,19 @@
+<html>
+<head>
+<script>
+let p=new Promise(function(resolve,reject){
+    setTimeout(function(){
+    resolve("Success");    
+    },3000);
+});
+p.then(function(smessage){
+console.log(smessage);
+},function(emessage){
+console.log(emessage);
+});
+alert("This is a promise demo");
+</script>
+</head>
+<body>
+</body>
+</html>

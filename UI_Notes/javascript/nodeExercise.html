@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      //Requirement 1: Adding all the food items to cart
+      function Add_all() {
+        var from = document.getElementById("from");
+        var cln = from.cloneNode(true);
+        document.getElementById("to").appendChild(cln);
+        //document.getElementById('heading').style.visibility = 'hidden';
+        var x = document.getElementById("Add_all");
+        x.disabled = "true";
+        x.style.background = "burlywood";
+        x.style.fontWeight = "bold";
+      }
+      //Requirement 2: Removing all the food items from the cart
+      function Remove_all() {
+        var to = document.getElementById("to");
+        if (to.hasChildNodes()) {
+          to.removeChild(to.childNodes[0]);
+        } else alert("No child node found !! ");
+        var x = document.getElementById("Remove_all");
+        x.disabled = "true";
+        x.style.background = "burlywood";
+        x.style.fontWeight = "bold";
+      }
+      //Requirement 4: Removing one by one the food items to cart
+      function Remove_one() {
+        var count1 = 0;
+        var images = document.getElementById("to").getElementsByTagName("img");
+        var x = images.length;
+        if (count1 < x) {
+          count1++;
+          var node = document.getElementById("to").lastChild;
+          document.getElementById("from").appendChild(node);
+          //document.getElementById('to').removeChild(node);
+          var x = document.getElementById("Remove_one");
+          //x.disabled = 'true';
+          x.style.background = "burlywood";
+          x.style.fontWeight = "bold";
+          console.log(count1);
+        }
+      }
+      //Requirement 3: Adding one by one the food items to cart
+      function Add_one() {
+        var count = 0;
+        var images = document
+          .getElementById("from")
+          .getElementsByTagName("img");
+        var x = images.length;
+        if (count < x) {
+          count++;
+          var img = document.getElementById("myImg");
+          //var clnImg = img.cloneNode(true);
+          document.getElementById("to").appendChild(img);
+          var x = document.getElementById("Add_one");
+          //x.disabled = 'true';
+          x.style.background = "burlywood";
+          x.style.fontWeight = "bold";
+          console.log(count);
+        }
+      }
+    </script>
+    <style>
+      #from {
+        float: left;
+        width: 200px;
+        height: 550px;
+      }
+      #buttons {
+        width: 150px;
+        height: 550px;
+        display: block;
+      }
+      #to {
+        width: 200px;
+        height: 550px;
+        float: right;
+      }
+      input[type="button"] {
+        border-radius: 10px;
+        padding: 10px;
+        margin: 28.5px;
+        font-size: 15px;
+        width: 120px;
+        height: 50px;
+      }
+      body {
+        background-image: url("images/BT.PNG");
+        background-repeat: no-repeat;
+      }
+      #main-head {
+        color: blue;
+      }
+      #outer {
+        height: 550;
+        width: 900px;
+        box-shadow: 5px 5px 5px grey;
+        background-color: white;
+      }
+      #outer1 {
+        height: 50;
+        width: 900px;
+        box-shadow: 2px 2px 2px grey;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <div id="outer1">
+        <h1 id="main-head">Place Your Order</h1>
+      </div>
+      <div id="outer">
+        <div id="from" style="background-color:white">
+          <div id="myImg">
+            <h5>Chinese Platter</h5>
+            <img src="images\chinesefood.jpg" height="100px" width="150px" />
+          </div>
+          <div id="myImg">
+            <h5>Veg Burger</h5>
+            <img src="images\grilledveg.jpg" height="100px" width="150px" />
+          </div>
+          <div id="myImg">
+            <h5>Cheese Pizza</h5>
+            <img src="images\pizza.jpg" height="100px" width="150px" />
+          </div>
+        </div>
+        <div id="to" style="background-color:white"></div>
+        <div id="buttons" style="background-color:white">
+          <input
+            type="button"
+            value="Add All"
+            title="Add them all !!"
+            id="Add_all"
+            onclick="Add_all()"
+          />
+          <br /><br />
+          <input
+            type="button"
+            value="Add One"
+            title="Add them one by one !!"
+            id="Add_one"
+            onclick="Add_one()"
+          />
+          <br /><br />
+          <input
+            type="button"
+            value="Remove All"
+            title="Remove them all!!"
+            id="Remove_all"
+            onclick="Remove_all()"
+          />
+          <br /><br />
+          <input
+            type="button"
+            value="Remove One"
+            title="Remove them one by one!!"
+            id="Remove_one"
+            onclick="Remove_one()"
+          />
+          <br /><br />
+        </div>
+      </div>
+    </center>
+  </body>
+</html>

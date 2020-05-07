@@ -1,0 +1,40 @@
+<html>
+<head>
+<script>
+//set
+var courses = new Set(); 
+console.log(courses);
+var courses = new Set(["Angular","React","Vue","Angular"]); 
+courses.add("Vue");
+console.log(courses);
+//weakset
+const employee1 = { name: 'Aadya', age: 26, role: 'UI Developer' };
+const employee2 = { name: 'Vidya', age: 27, role: 'Full Stack Developer' };
+const employee3 = { name: 'Navya', age: 31, role: 'Web Developer' };
+const employees = new WeakSet([employee1, employee2, employee3]);
+console.log(employees);
+//map
+const employees = new Map();
+employees.set('veena_bhat@i.com', { 
+    firstName: 'Veena',
+    lastName: 'Bhat',
+    role: 'UI Developer' 
+});
+employees.set('aadya_kamath@i.com', {
+    firstName: 'Aadya',
+    lastName: 'Kamath',
+    role: 'UX Designer'
+});
+console.log(employees);
+//weakmap
+const book1 = { title: 'Learning ES6', author: 'Tara MS' };
+const book2 = { title: 'Node with Express', author: 'Prajila V.K' };
+const book3 = { title: 'Angular with PrimeNG', author: 'Vidya Bhat' };
+const library = new WeakMap();
+library.set(book1, true);
+library.set(book2, false);
+library.set(book3, true);
+console.log(library);
+</script>
+</head>
+</html>

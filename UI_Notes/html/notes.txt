@@ -1,0 +1,203 @@
+article   	Defines main content of webpage
+section     Defines content contextually related to each other
+header 	 Defines header information
+footer	Defines content contextually related to each other
+nav  	 Defines navigational links
+aside	Defines content related to <article>
+address	Defines contact information
+h1,h2,h3,h4,h5,h6	Defines heading
+
+Header element contains header information of the webpage
+Article element contains the main content of the webpage
+Section element groups thematically related content
+Aside element contains side-info
+H1 element defines heading
+Nav element defines navigational links
+Footer element contains footer information
+
+head section keep the information about the page.
+<meta name="keywords" content="Online, Shopping" />
+ 
+abbr	Defines abbrevation or acronym
+q	Represents text quoted from another source by adding quotation mark ("")
+small	Displays text in smaller font-size than surrounding text
+mark	Highlights text
+strong	Displays text in bold
+em	Displays text in italic or imphasized format
+sub	Displays text as subscript
+sup	Displays text as superscript
+span	Provides styling to text
+br	Breaks line of text
+
+Character; Description; Entity Name; Entity Number
+Non-breaking; space; &nbsp; &#160;
+<; Less than; &lt; &#60;
+>; Greater than; &gt; &#62;
+&; Ampersand; &amp; &#38;
+©; Copyright; &copy; &#169;
+€; Euro; &euro; &#8364;
+£; Pound; &pound; &#163;
+®; Registered trademark; &reg; &#174;
+
+
+Global Entities:
+contenteditable	Allows user to edit content.Possible values are true/false.
+dir	Specifies text direction. Possible values are Itr/ rtl
+title	Displays string message as tool tip
+spellcheck	Specifies whether spelling of an element's value should be checked or not. Possible values are true/false
+id	gives unique id to an element
+
+Tables in HTML:
+Element	Description
+caption	Defines table heading
+tr	Defines row of table
+th	Defines heading of column
+td	Defines data of column
+
+Attribute	Description
+colspan	Merges column
+rowspan	merges row
+
+caption element defines heading for table.
+
+
+Form elements:
+
+Possible value of "input type"	Description
+text	Creates textbox
+password	Creates textbox that accepts only password
+checkbox	Creates checkbox
+radio	Creates radio button
+button	Creates button
+submit	Creates button that submits values of all form elements to server
+reset	Creates button that resets values of all form elements to their default value
+image	Creates graphical version of button
+file	Creates control to upload the file to the server
+hidden	Creates hidden text field
+email	Creates textbox that accepts only valid email id
+number	Creates spinbox that accepts only whole numbers
+range	Creates range slider
+search	Creates search bar
+URL	Creates textbox that accepts only valid url
+color	Creates color picker
+date	Creates date picker to select date
+month	Creates date picker to select month
+week	Creates date picker to select week
+time	Creates date picker to select time
+
+You may want to submit supplementary data (such as user's country / language of user input) to server, without letting user manually provide it.
+This can be done using hidden element.
+It must have value attribute set. Content of value attribute is sent to server.
+User cannot modify value of hidden element.
+
+<html>
+    <body>
+        <form>
+            Username:<input type="text" />
+            <input type="hidden" name="language" value="english" /> 
+        </form>
+    </body>
+</html>
+
+The <input type="image"> defines an image as a submit button.
+The path to the image is specified in the src attribute.
+
+The <input type="file"> defines a file-select field and a "Browse" button for file uploads.
+To define a file-select field that allows multiple files to be selected, add the "multiple" attribute.
+
+<input type="email"/>
+<input type="range" />
+<input type="url"/>
+<input type="color" />
+<input type="date"/>
+<input type="month"/>
+<input type="year"/>
+<input type="time"/>
+
+Form Elements:
+
+Placeholder
+Pattern
+Min
+Max
+Step
+Required
+Multiple
+Form-override
+
+<input type="range" min="0" max="100" step="10" />
+<input type="file" multiple />
+
+Form-override override attributes set for form element.
+They can be used only with submit and image input elements.
+
+Form-override attribute	Description
+form action	Overrides the form action attribute
+form novalidate	Overrides the form novalidate attribute
+form method	Overrides the form method attribute
+form target	Overrides the form target attribute
+
+<label for="firstname">Firstname:</label>
+<input type="text" id="firstname" />
+<meter min="0" max="100" value="90">50 of 100</meter>
+<progress min="0" max="100" value="50">50 of 100</progress>
+
+<input list="Items" />
+<datalist id="Items">
+	<option value="Pen">
+	<option value="Eraser">
+	<option value="Paper">
+	<option value="Sketch">
+</datalist>
+
+<form oninput="O1.value = parseInt(R1.value)">
+	Rate your experience:<input type="range" id="R1" min="0" max="100" step="10" />
+	<output for="R1" id="O1"></output>
+</form>
+
+<form novalidate>
+	Email ID:<input type="email" />
+	<input type="submit" value="Submit without validation" />
+</form>
+
+Embedding elements in webpage:
+Content of your webpage may have multimedia elements like image, audio, video or incorporation of another webpage in your webpage.
+
+Audio parameters:
+loop	Boolean- any value sets it to true	Loops audio indefinitely
+autoplay	Boolean- any value sets it to true	Plays audio indefinitely
+preload	none-preloading
+metadata- audio metadata is downloaded
+auto- entire audio file is downloaded	Specifies whether an audio should be preloaded or not
+muted	Boolean- any value sets it to true	Mutes audio
+
+Video parameters:
+
+Attribute	Value	Description
+loop	Boolean- any value sets it to true	Loops audio indefinitely
+autoplay	Boolean- any value sets it to true	Plays audio indefinitely
+preload	none-preloading
+metadata- video metadata is downloaded
+auto- entire audio file is downloaded	Specifies whether video should be preloaded or not
+height	pixel	Specifies height of video player
+width	pixel	Specifies width of video player
+poster	URL of an image file	Displays image until the first frame of the video is downloaded
+muted	Boolean- any value sets it to true	Mutes audio
+
+All browsers don't support all audio/video formats.
+Therefore, audio/video element allows you to list multiple sources.
+The browser iterates through all sources one by one until it finds one which it can play.
+List different media sources in order - most desirable to least desirable.
+Instead of using src attribute in audio/video element, use source element within audio/video element.
+
+iframes allows to embed another wensite into one's own.
+<iframe src="http://timesofindia.indiatimes.com/"  width="1000" height="1000"></iframe>
+
+www.caniuse.com
+www.html5test.com
+
+HTML5 References:
+
+W3C HTML5 specification
+HTML tutorial on w3schools.com 
+Mozilla Developer Network HTML5 developer guide 

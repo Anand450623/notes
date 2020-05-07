@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>User Form</title>
+	<script>
+		function User(name, email, mobile, password) 
+		{
+		  this.name = name;
+		  this.email = email;
+		  this.mobile = mobile;
+		  this.password = password;
+		}
+		var user = JSON.parse(
+		  '{"name":"Mary","email":"mary123@gmail.com","mobile":1234567890,"password":"mary@123"}'
+		);
+		document.write(
+		  "User Details: " +
+			" name is " +
+			user.name +
+			" mobile is " +
+			user.mobile +
+			" email is " +
+			user.email
+		);
+	</script>
+  </head>
+  <body style="background-color:lightblue;text-align:center">
+    <h1>Dating App</h1><br>
+    <h3>Login Form</h3><br>
+    <p>Please compare details with the details retrieved from the server.</p>
+  </body>
+</html>

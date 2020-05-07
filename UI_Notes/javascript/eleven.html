@@ -1,0 +1,97 @@
+<html>
+ 
+<head>
+    <style>
+        div#maincontent {
+            height: 100px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: left;
+            color: #08438E;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+ 
+        div#heading {
+            text-decoration: bold;
+            text-align: center;
+            margin-top: 80px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: center;
+            color: #08438E;
+            background-color: #CEE2FA;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+ 
+        h2 {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+ 
+<body>
+    <center>
+        <div id="heading">
+            <h2>Booking Summary</h2>
+        </div>
+        <div id="maincontent">
+            <script>
+                var seats = 4;
+                var costPerTicket = 320;
+                var cost = 0;
+                calculateCost(seats);
+                function calculateCost(tickets) {
+                    var discountedCost;
+                    if (tickets > 2 && tickets <= 6) {
+                    document.write(
+                        "Cost per ticket is: Rs." + costPerTicket + "<br>"
+                    ); //Requirement 4: Calling function to calculate discounted amount, when user clicks on //the hyperlink
+                    document.write(
+                        "Total cost: Rs." + tickets * costPerTicket + "</b><br>"
+                    );
+                    document.write(
+                        "<br> Congratulations! " +
+                        tickets +
+                        " seats are eligible for discount. <a  href='' onclick='calculateDiscount(event);'>Apply</a><br><br>"
+                    );
+                    } else if (tickets > 6) {
+                    document.write(
+                        "<br>Oops!You cannot book more than 6 tickets!!<br>"
+                    );
+                    } else {
+                    document.write(
+                        "Cost per ticket is: Rs." + costPerTicket + "<br>"
+                    );
+                    cost = tickets * costPerTicket;
+                    document.write(
+                        "<br><br>" + "Total cost: Rs." + cost + "</b><br>"
+                    );
+                    }
+                }
+                function calculateDiscount(event) {
+                    event.preventDefault();
+					var cost = 0;
+                    var discount = 10;
+                    const percent = 100;
+                    for (index = 1; index <= seats; index++) {
+                    discountedCost =
+                        costPerTicket - (discount / percent) * costPerTicket;
+                    cost = cost + discountedCost;
+                    discount = discount + 10;
+                    }
+                    alert(
+                    "Amount payable after discount is: Rs." + cost
+                    ); /*document.write('<br>'+'Total seats: '+seats+'<br>');
+                    document.write('<br>'+'Amount payable: Rs.'+cost+'<br>');*/
+                }
+            </script>
+        </div>
+    </center>
+</body>
+ 
+</html>

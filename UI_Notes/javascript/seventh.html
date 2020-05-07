@@ -1,0 +1,92 @@
+<html>
+ 
+<head>
+    <style>
+        div#maincontent {
+            height: 220px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: left;
+            color: #08438E;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+ 
+        div#heading {
+            text-decoration: bold;
+            text-align: center;
+            margin-top: 80px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: center;
+            color: #08438E;
+            background-color: #CEE2FA;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+ 
+        h2 {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+ 
+<body>
+    <center>
+        <div id="heading">
+            <h2>Booking Summary</h2>
+        </div>
+        <div id="maincontent">
+            <script>
+                var seats = 3;
+                var costPerTicket = 320;
+                var cost = 0; //Requirement 5:Code for total cost calculation is moved to function calculateCost
+                calculateCost(seats); //Requirement 3 a:Handling cost calculation inside the function
+                function calculateCost(tickets) {
+                    var discountedCost;
+                    document.write(
+                    "Actual cost per ticket: Rs." + costPerTicket + "<br>"
+                    );
+                    if (tickets > 2 && tickets <= 6) {
+                    //Requirement 3 b:Discount calculation is performed in a separate function
+                    calculateDiscount(tickets); //cost = cost + discountedCost;
+                    } else if (tickets > 6) {
+                    document.write(
+                        "<br>Oops!You cannot book more than 6 tickets!!<br>"
+                    );
+                    } else {
+                    cost = tickets * costPerTicket;
+                    document.write(
+                        "<br><br>" + "Amount payable: Rs." + cost + "<br>"
+                    );
+                    }
+                } //Requirement 3 b:Handling discount calculation inside function calculateDiscount
+                function calculateDiscount(tickets) {
+                    var discount = 10;
+                    const percent = 100;
+                    document.write(
+                    "<br>" +
+                        tickets +
+                        " seats are eligible for festive discount!!" +
+                        "<br>"
+                    );
+                    for (index = 1; index <= tickets; index++) {
+                    discountedCost =
+                        costPerTicket - (discount / percent) * costPerTicket;
+                    cost = cost + discountedCost;
+                    document.write(
+                        "<br>" + discount + " % discount!" + " on Ticket " + index
+                    );
+                    discount = discount + 10;
+                    }
+                    document.write("<br><br>" + "Amount payable: Rs." + cost + "<br>");
+                }
+            </script>
+        </div>
+    </center>
+</body>
+ 
+</html>

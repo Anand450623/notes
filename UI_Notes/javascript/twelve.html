@@ -1,0 +1,110 @@
+<html>
+ 
+<head>
+    <style>
+        div#maincontent {
+            height: 150px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: left;
+            color: #08438E;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+ 
+        div#heading {
+            text-decoration: bold;
+            text-align: center;
+            margin-top: 80px;
+            //height:70px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: center;
+            color: #08438E;
+            background-color: #CEE2FA;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+ 
+        h2 {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+ 
+<body>
+    <div id="heading">
+        <h2>Booking Summary</h2>
+    </div>
+    <div id="maincontent">
+        <script>
+            var seats = 2;
+            var cost = 0;
+            var discountedCost;
+            var discount = 10;
+            const percent = 100;
+            function movie(costPerTicket) {
+            this.costPerTicket = costPerTicket;
+            }
+            function customer(seats) {
+            this.seats = seats;
+            }
+            var customer1 = new customer(4);
+            var movie1 = new movie(320);
+            calculateCost(customer1, movie1);
+            function calculateCost(cust, mov) {
+            var tickets = cust.seats;
+            var price = mov.costPerTicket;
+            var discountedCost;
+            if (tickets > 2 && tickets <= 6) {
+                document.write(
+                "Cost per ticket is: Rs." + mov.costPerTicket + "<br>"
+                );
+                document.write(
+                "<br> Congratulations! you are eligible for festive discount!!<br><br>"
+                );
+                calculateDiscount(tickets, price);
+            } else if (tickets > 6) {
+                document.write(
+                "<br>Oops!You cannot book more than 6 tickets!!<br>"
+                );
+            } else {
+                document.write("Cost per ticket is: Rs." + price + "<br>");
+                cost = tickets * price;
+                document.write(
+                "<br><br>" +
+                    "For " +
+                    tickets +
+                    " " +
+                    "tickets, you need to pay: <b>Rs." +
+                    cost +
+                    "</b><br>"
+                );
+            }
+            }
+            function calculateDiscount(tickets, price) {
+            var discount = 10;
+            const percent = 100;
+            document.write("Actual Total Cost is Rs. " + tickets * price);
+            for (index = 1; index <= tickets; index++) {
+                discountedCost = price - (discount / percent) * price;
+                cost = cost + discountedCost;
+                discount = discount + 10;
+            }
+            document.write(
+                "<br>For " +
+                tickets +
+                " " +
+                "tickets, DISCOUNTED cost is Rs." +
+                cost
+            );
+            }
+        </script>
+    </div>
+</body>
+ 
+</html>
+ 

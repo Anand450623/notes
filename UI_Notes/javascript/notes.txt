@@ -1,0 +1,15 @@
+<html>
+	<body>
+		<p id='para' class='myColor'>Hello World!<p>
+	</body>
+</html>
+
+i.document.getElementById('para')
+ii.document.getElementsByTagName('p')
+iii.document.getElementsByClassName('myColor')
+iv.document.querySelectorAll('p#para');
+
+Browser Object Model its properties and methods associated with document, window, history, navigator and location objects.
+The Document Object Model hierarchy.
+How to add, remove elements on HTML elements and Handling events using DOM API.
+Event object, the properties and methods associated with DOM Nodes with appropriate explanation. 

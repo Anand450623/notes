@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<style>
+			body {
+				padding-top: 10px;
+			}
+		</style>
+	</head>
+	<body class="container-fluid">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3>Built-in functions</h3>
+			</div>
+			<div class="panel-body">
+				<script>
+                    //1. alert
+                    alert("Let us proceed");
+
+                    //2. confirm
+                    var decision = confirm("Shall we proceed?");
+                    if (decision) document.write("You decided to proceed" + "<br><br>");
+                    else document.write("You decided not to proceed" + "<br><br>");
+            
+                    //3. prompt
+                    var userInput = prompt("Please enter your name:");
+                    document.write("Hello dear " + userInput + "<br><br>");
+
+                    //4. isNaN
+                    var isNotNumber1 = isNaN(30);
+                    var isNotNumber2 = isNaN("hello");
+            
+                    document.write("30 is not a number:" + isNotNumber1 + "<br>");
+                    document.write("hello is not a number:" + isNotNumber2 + "<br><br>");
+            
+                    //5. isFinite
+                    var isNumber1 = isFinite(30);
+                    var isNumber2 = isFinite("hello");
+            
+                    document.write("30 is a number:" + isNumber1 + "<br>");
+                    document.write("hello is a number:" + isNumber2 + "<br><br>");
+
+                    //6. parseInt
+                    document.write('parseInt("10"): ' + parseInt("10") + "<br>");
+            
+                    document.write(
+                      'parseInt("10 20 30"): ' + parseInt("10 20 30") + "<br>"
+                    );
+            
+                    document.write(
+                      'parseInt("10 years"): ' + parseInt("10 years") + "<br>"
+                    );
+            
+                    document.write(
+                      'parseInt("years 10"): ' + parseInt("years 10") + "<br><br>"
+                    );
+
+                   //7. parseFloat
+                   document.write(
+                     'parseFloat("10.34"): ' + parseFloat("10.34") + "<br>"
+                   );
+    
+                   document.write(
+                     'parseFloat("10 20 30"): ' + parseFloat("10 20 30") + "<br>"
+                   );
+    
+                   document.write(
+                     'parseFloat("10.50 years"): ' + parseFloat("10.50 years") + "<br>"
+                   );
+    
+                   document.write(
+                     'parseFloat("years 10"): ' + parseFloat("years 10") + "<br><br>"
+                   );
+ 
+                    //8. eval
+                    eval("2*3");
+                    document.write(eval("2*3") + "<br><br>");
+            
+                    eval(
+                      "var num1=2;var num2=3;var result=num1*num2;document.write(result+'<br><br>')"
+                    );
+            
+                    //9. setTimeout
+                    function executeMe1() {
+                      document.write("Function says hello after timeout!" + "<br><br>");
+                    }
+                    setTimeout(executeMe1, 3000);
+            
+                    //10.setInterval
+                    function executeMe2() {
+                      document.write("Function says hello every interval!" + "<br>");
+                    }
+                    setInterval(executeMe2, 3000);
+				</script>
+			</div>
+		</div>
+	</body>
+</html>

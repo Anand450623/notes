@@ -1,0 +1,62 @@
+<html>
+<head>
+    <style>
+        div#maincontent {
+            height: 100px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: left;
+            color: #08438E;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+        div#heading {
+            text-decoration: bold;
+            text-align: center;
+            margin-top: 80px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: center;
+            color: #08438E;
+            background-color: #CEE2FA;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+        h2 {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div id="heading">
+            <h2>Booking Summary</h2>
+        </div>
+        <div id="maincontent">
+            <script>
+              // Variable and constant declaration and intialization for:
+              //1. number of seats to be booked
+              //2. cost per ticket
+              //3. discount
+              //4. calculating total price without discount
+              //5. calculating total price with discount
+              var seats = 4;
+              var costPerTicket = 320;
+              var discount = 50; // Requirement 1: Using operators to calculate total cost
+              var totalCost = seats * costPerTicket;
+              const percent = 100; // Requirement 2 a: Using operators to calculate discounted cost
+              var discountedCost = totalCost - (discount / percent) * totalCost; // Output: Displaying the values of the variables on the browser
+              document.write(
+                "Total cost( " + seats + " tickets ):" + "Rs." + totalCost + "<br>"
+              );
+              document.write("Discount coupon:" + discount + "%" + "<br><br>");
+              document.write("Amount Payable: " + "Rs." + discountedCost);
+            </script>
+        </div>
+    </center>
+</body>
+</html>
+ 

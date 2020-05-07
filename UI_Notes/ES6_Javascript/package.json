@@ -1,0 +1,22 @@
+{
+  "name": "es6-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "babel": "babel",
+    "start":"start http-server",
+    "build": "babel src --out-dir dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2017": "^6.16.0",
+    "http-server": "^0.12.3"
+  }
+}

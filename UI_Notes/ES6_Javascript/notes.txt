@@ -1,0 +1,6 @@
+Components : 
+
+Node and NPM – npm is the package manager for JavaScript which is part of Node.js and the world’s largest software registry.
+Babel – the compiler for next generation JavaScript.
+Webpack – a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.
+

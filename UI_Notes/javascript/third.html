@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <style>
+            body {
+                padding-top: 10px;
+            }
+        </style>
+    </head>
+	<body class="container-fluid">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3>continue statement</h3>
+			</div>
+			<div class="panel-body">
+				<script>
+                    var counter = 0;
+                    
+                    for ( var loopVar = 0; loopVar < 5; loopVar++) 
+					{
+						document.write("loopVar "+loopVar+"<br>");
+                        if (loopVar == 3)
+                        	continue;
+                        counter++;
+                        document.write("counter "+counter+"<br>");
+                    }
+				</script>
+			</div>
+		</div>
+	</body>
+</html>

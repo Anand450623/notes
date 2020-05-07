@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<style>
+			body {
+				padding-top: 10px;
+			}
+		</style>
+	</head>
+	<body class="container-fluid">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3>Window object</h3>
+			</div>
+			<div class="panel-body">
+				<script>
+                    var inHeight = window.innerHeight;
+                    document.write("Inner height of window: " + " " + inHeight + "<br>");
+                    
+                    var inWidth = window.innerWidth;
+                    document.write("Inner width of window: " + " " + inWidth + "<br>");
+                    
+                    var outHeight = window.outerHeight;
+                    document.write("Outer height of window: " + " " + outHeight + "<br>");
+                    
+                    var outWidth = window.outerWidth;
+                    document.write("Outer width of window: " + " " + outWidth + "<br>");
+                    
+                    localStorage.setItem("username", "Bob");
+                    document.write(
+                      "Item stored in localStorage is " + localStorage.getItem("username") + "<br>"
+                    );
+                    
+                    sessionStorage.setItem("password", "Bob@123");
+                    document.write(
+                      "Item stored in sessionStorage is " +
+                        sessionStorage.getItem("password") +
+                        "<br>"
+                    );
+				</script>
+			</div>
+		</div>
+	</body>
+</html>

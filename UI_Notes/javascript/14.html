@@ -1,0 +1,65 @@
+<html>
+    <head>
+		<style>
+			body {
+				padding-top: 10px;
+			}
+		</style>
+	</head>
+	<body class="container-fluid">
+	<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3>Array</h3>
+			</div>
+			<div class="panel-body">
+				<p>
+				<script>
+                    var myArray = ["Android", "ios", "Windows"];
+                    document.write(
+                      "Length of the array is : " + myArray.length + "<br>"
+                    );
+        
+                    var myArray = ["Android", "ios", "Windows"];
+                    myArray.push("Linux");
+                    document.write("Updated array contents: " + myArray + "<br>");
+        
+                    var myArray = ["Android", "ios", "Windows", "Linux"];
+                    document.write("Original array items: " + myArray + "<br>");
+        
+                    var poppedOutItem = myArray.pop();
+        
+                    document.write(
+                      "Element that was removed: " + poppedOutItem + "<br>"
+                    );
+        
+                    var myArray = ["Android", "ios", "Windows"];
+                    document.write("Original array items: " + myArray + "<br>");
+                    myArray.splice(1, 0, "Linux");
+                    document.write("Updated array: " + myArray + "<br>");
+
+                    var myArray1 = ["Android", "ios", "Windows"];
+                    var myArray2 = ["Samsung", "Apple", "Nokia"];
+                    document.write(
+                      "Concatenated array is : " + myArray1.concat(myArray2) + "<br>"
+                    );
+        
+                    var myArray = ["Android", "ios", "Windows"];
+        
+                    myArray.forEach(function(currentItem, index) {
+                      document.write(
+                        "Array myArray has " +
+                          currentItem +
+                          " " +
+                          "at index" +
+                          " " +
+                          index +
+                          "<br>"
+                      );
+                    });
+                </script>
+				</p>
+			</div>
+		</div>
+	
+    </body>
+</html>
