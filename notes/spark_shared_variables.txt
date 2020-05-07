@@ -1,7 +1,0 @@
-val rdd = sc.textFile("C:/hadoop_input_files/301/CoreDatasets/sale.txt")
-val blankLinesCounter = sc.longAccumulator("Accumulator1")
-rdd.foreach { line => if(line.length() == 0) blankLinesCounter.add(1) }
-println("Empty Lines: " + blankLinesCounter)
-
-val broadcastVar = sc.broadcast(Array(100, 200, 300))
-broadcastVar.value
