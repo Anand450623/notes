@@ -1,0 +1,368 @@
+The key features of React are:
+
+Component-based: Components are the smallest unit in a React application. Anything that we want to render is rendered through components. Components help in maintainability. 
+Virtual DOM: React uses virtual DOM concept for DOM manipulation which improves the performance of the application
+Unidirectional data flow: In React data flows in one direction. Every component will get data from the top and not from each other. This helps in debugging.
+JSX syntax: React used JSX syntax which is similar to XML and HTML syntax which makes it easy for writing markup and binding events in components 
+SEO performance: The SEO performance can be improved using the server-side rendering concept. React components can run on the server also which enhanced the SEO performance. We can develop isomorphic applications using React.
+
+React components are the fundamental unit of any React application. They are capable of encapsulating data and view as a single unit. These components can work in conjunction with each other.
+Here, in ReactJS, components resides in virtual DOM and these components will be available as nodes in actual DOM.
+
+Whenever any updates happens in the application, the virtual DOM gets modified. React computes the difference between the previous virtual tree and the current virtual tree
+Based on these differences React will figure out how to make updates to the actual DOM efficiently
+React does all the computations in its abstracted DOM and updates the DOM tree accordingly
+Virtual DOM enhances performance and efficiency by minimizing expensive updates in the actual DOM.
+Hence React is said to be a great performer because it manages a Virtual DOM.
+
+creating component in React using createElement :
+
+React.createElement('form', {},
+React.createElement("h1", {}, "Login"),
+React.createElement('input', {type: 'text',placeholder:'Name', value: '',}),
+React.createElement('br', {}),React.createElement('br', {}), 
+React.createElement('input', {type: 'password', placeholder: 'password',
+				   value: '',}), 
+React.createElement('br', {}), React.createElement('br', {}), 
+React.createElement('button', {type: 'submit'}, "Login"))
+
+As per the JSX syntax, all the adjacent elements must be wrapped in an enclosing tag i.e. there should be only one outermost element.
+By adhering to JSX syntax we use <div> for grouping the elements and this introduces an extra and unnecessary node into the DOM. As a solution to this, React Fragments are introduced which is a common pattern in React for a component to return multiple elements. React Fragments allows us to group a list of React elements without adding any extra node to the DOM.
+
+return  <React.Fragment>
+   <h3>ReactJS:</h3>
+   <img src="./image/react.PNG" width="120" height="120"/>
+   <p> React is a JavaScript library for creating User Interfaces.</p>
+</React.Fragment>
+
+Iterating and filling values:
+
+var employees = 
+[
+	{ empId: 1234, name: 'Jack', designation:'SE', salary:23000},
+	{ empId: 4567, name: 'Johnson', designation:'SSE', salary:15000},
+	{ empId: 8910, name: 'Sachin',designation:'TA', salary:30000}
+]
+
+return (<React.Fragment>
+	 <table style={{width:'60%'}} className='table'>
+		  <thead className="thead-light">
+			  <tr>
+				   <th>EmpID</th>
+				   <th>Name</th>
+				   <th>Designation</th>
+			  </tr>
+		  </thead>
+		  <tbody>
+			   {employees.map(employee => {
+					 return employee.salary > 15000 ? (<tr key={Math.random()}>
+							  <td>{employee.empId}</td>
+							  <td>{employee.name}</td>
+							  <td>{employee.designation}</td>
+					  </tr>) : null
+			  }) 
+			  }
+		  </tbody>
+	 </table>
+</React.Fragment>)
+
+npm install bootstrap 
+NOTE : If you are using the js file of Bootstrap then import the bootstrap js file but before that install jQuery, as the bootstrap JavaScript depends on jQuery
+
+npm install react-bootstrap bootstrap.
+npm install @material-ui/core
+
+--------------------------------------------------------------------------------------------------------
+Styling React Component:
+--------------------------------------------------------------------------------------------------------
+
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import './index.css';
+
+class  CustomApp extends React.Component
+{
+    render()
+    {
+        return (<React.Fragment>
+        <h1 className="highlight">Heading</h1>
+        <button className="btn btn-success">Submit</button>
+        <Button variant="warning"> Click here </Button>
+        <Typography variant="h4" gutterBottom>Welcome to React</Typography>
+        <Button variant="contained" color="primary">Submit2</Button>
+        </React.Fragment>);
+    }
+}
+
+export default CustomApp;
+
+---------------------------------------------------------------------------------------------------------
+
+Key points to be remembered while handling data in a component's State: 
+
+States are mutable and only used on top level component.
+They are reserved only for interactivity and component's event handlers may change to trigger a UI update.
+The state will be set with a default value when component mounts and will mutate in time based on user events generated.
+
+When we want to pass any data from one component to another component, it is passed as a prop.
+
+Props allow us to pass data from one component to another component
+Props are immutable - a component cannot change its props however it is responsible for putting together
+Props can be accessed as this.props
+
+We can set default values to the props using the defaultProps property.
+'propTypes' are used to validate props using different validators. For invalid value, a warning will be logged on the console.
+
+
+Every component will have following phases in its Lifecycle:
+
+Mounting phase - when the component is mounted to DOM tree.
+Updating phase - when component is being updated with new state, new props are being received.
+Unmounting phase - destroying component from DOM tree.
+Error Handling - Handling errors within React Component.
+
+Every phase in the lifecycle of a component has few methods which will be invoked during that phase of a component's lifecycle. We can override these methods to provide the desired functionality.
+
+These methods can be used in the following cases:
+
+For making an Ajax call, to set timer and to integrate with other frameworks.
+To avoid unnecessary re-rendering of a component.
+To update the component, based on the props changes.
+For clearing the values when component is unmounted.
+
+At mounting phase of a component, following methods which will be invoked:
+
+constructor()
+static getDerivedStateFromProps()
+render()
+componentDidMount()
+
+getDerivedStateFromProps is a static method. Since it is a static method, we cannot access 'this' keyword within this method. Hence we cannot call setState method. 
+This method returns an object which will be the updated state and return null if there is no state update.
+This method is used to update the state of a component based on the changes of the props as shown below.
+
+class Employee extends React.Component {
+  static getDerivedStateFromProps(props, state) {
+    if (props.isLoggedIn !== state.isLoggedIn) {
+      return {
+        isLoggedIn: props.isLoggedIn,
+      };
+    }
+    return null;
+  }
+}
+
+The above method introduces some complexity, hence it is rarely used.
+
+At updating phase of a component, below methods are executed based on props or state being received and updates happens in a component:
+
+static getDerivedStateFromProps()
+shouldComponentUpdate()
+render()
+getSnapshotBeforeUpdate()
+componentDidUpdate()
+
+-------------------------------------------------------------------------------------------------------------
+Code to get latest position in chat window application :
+The below method checks whether the user is at the bottom of the chat window. If so, then the user should be scrolled to the bottom of the chat window, when new messages comes up in the chat window.
+-------------------------------------------------------------------------------------------------------------
+
+getSnapshotBeforeUpdate(prevProps, prevState) {
+    if (prevState.chats.length < this.state.chats.length) {
+      const layout = this.layout.current;
+      const isAtBottomOfChatWindow =
+        window.innerHeight + window.pageYOffset === layout.scrollHeight;
+      return { isAtBottomOfGrid };
+    }
+    return null;
+}
+
+-------------------------------------------------------------------------------------------------------------
+
+componentWillUnmount() method will be invoked immediately before a component is unmounted and destroyed.
+
+This method is used at the unmounting process of a component.
+This is the place for performing any necessary cleanup. e.g: any subscription which was created in componentDidMount().
+A component can be unmounted from DOM using ReactDOM.unmountComponentAtNode().
+
+Error handling can be taken care in React using the below methods
+
+static getDerivedStateFromError()  
+componentDidCatch()
+
+Error boundaries should be defined in order to catch errors occurring within the child components. Whenever a component crashes because of a JavaScript error, the error will be logged and fall back UI is displayed.
+Error boundaries are nothing but class components which defines either getDerivedStateFromError or componentDidCatch method
+
+--------------------------------------------------------------------------------------------------------------------
+
+npm install axios
+Axios offers the following methods:
+
+axios.get()
+axios.post()
+axios.put()
+axios.delete()
+axios.patch()
+axios.options()
+
+Eg: axios.get('url')
+        .then(result => 
+           console.log(result.data)
+        )
+        .catch(error => 
+            console.log(error)
+        );
+
+Advantages of using Axios:
+
+1. The response returned by axios is the response that we need, but with fetch we need to use .json method to get the actual response
+2. Axios is more secure than fetch and protects from XSRF attacks
+3. Axios are supported by most of the browsers including Internet Explorer 8+
+4. Axios has better error handling
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+We can create two different ways of forms in React:
+
+1. Controlled component
+2. Uncontrolled component 
+
+Controlled component: In HTML, form elements such as <input>, <textarea>, and <select> typically maintains their own state and that gets updated based on user input. But in React, we handle it using state and state gets updated using setState() method. So an input form element whose value is controlled by React in this way will be called a controlled component.
+
+Below is an example of a controlled component where it has a value attribute and a handler function:
+<input type="text" value={this.state.name} onChange={this.handleData}/>
+ 
+Uncontrolled component: The traditional HTML input elements are uncontrolled component, where the form data is handled by DOM itself. In uncontrolled component, we do not use the value attributes.
+
+Below is the example for an uncontrolled component:
+<input type="text" />
+
+In React, ref provides a way to access the DOM node or the React elements, and helps in getting the value from the DOM.
+refs are to be used when we have the below requirements:
+
+1. Integrating with third-party libraries, like D3 which has it's own DOM manipulation API's.
+2. To use media playbacks like audio, video. refs provide control over the DOM API.
+3. Trigger imperative animations
+
+By using refs, we are deviating from the React way of handling data. In React we store data as state and when the state in updated component gets re-rendered. This follows a unidirectional data flow and the data is stored in a single source of truth i.e., state.
+
+React hooks are JavaScript functions, which allows the developer to interact with the state and lifecycle methods through functional components
+Earlier we could associate state, modify the state, and implement lifecycle methods only in class components, whereas functional components were used only to present the UI content, but now with React 16.8 we can achieve the above-mentioned tasks in functional components using React hooks.
+
+The different hooks available in React are
+
+useState()
+useEffect()
+useContext()
+
+useEffect():
+
+1. If nothing is passed as second paremeter, content innside the function is called at every update including first time.
+2. If empty array is passed as second parameter, content inside is called only once at mountng and act as componentDidMount Method.
+3. If array is passed as second parameter, content is invoked only when the change is made in elements which are present inside the passed array.
+
+In class based components, contextType property is used to consume context whereas  in functional components we use ThemeContext.Consumer but it sometimes seems complex.
+Hence in order to consume context in functional components we can use useContext() hook.
+
+As we all know, these days we are switching from the multi-page application app to single page application (SPA) because of the below issues we had in multi-page applications:
+
+Every request will be sent to the server from the client.
+The Server responds to the client with new HTML content.
+Every time page reload will happen for every request.
+This would increase the round trips to the server and also delay in response.
+
+SPA overcomes limitations of multi-page application as described below:
+
+Rather than loading a new page from the server on every user interaction (such as clicking on the login button) instead, it loads an entire web page containing all views from the server when the application starts.
+As a result, after the initial page load, no server communication is required for further page updates upon user interaction.
+
+For building SPA using React JS, the react provides the react-router-dom library.
+npm install react-router-dom
+
+Router-dom API tags:
+
+<BrowserRouter>: It is a primary component containing the entire routing configuration. It is a more popular one because it uses the HTML5 History API to keep track of your router history. All the routes should be wrapped within a container element such as div.
+
+<Route>: It is a prop of Router. It maps routes to our application’s component hierarchy using "path“ and "component" props and sets all navigational routes
+
+path: Maps to the path given in URL
+
+component: Contains component name to be rendered when the route is mapped
+
+exact: This property tells Route to match the exact path. In the below example Header component will render when the browser's location path matches exactly /
+
+<Router> 
+  <!--Configures route for main component i.e. Header-->
+	<div>
+ 	        <Route exact path = "/" component = {Header} />             
+	        <Route path = "/login" component = {Login} />  <!--Configures route for Login component--> 
+	        <Route path = "/home" component = {Home} />    <!--Configures route for Home component-->
+	</div> 
+</Router> 
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Redux is an application data-flow architecture which is used for predicting state changes in JavaScript applications. Redux is not a framework. Redux can be used with any other View library but mostly used with React.
+
+The main concepts of Redux architecture are:
+
+Store: The place where the entire state of the application is stored.
+Actions: JS objects which encapsulate the events triggered within the application. 
+Reducers: Pure functions that modify the state of the application according to the actions triggered.
+
+In Redux state is an immutable object. The state object cannot be changed directly in Redux. Triggering actions are the only way to modify the state. Every time the state is modified a new object should be returned which represents the modifications that are made to the state object.
+
+Redux data flow :
+
+React Components: React components represent the UI rendered on the browser. Components would dispatch actions for events triggered within them and whenever the state changes the component renders the current state by connecting to the Redux store.
+
+Action Creators: Action creators are functions that wrap the actual action object.
+Action: Action is a plain JavaScript object. Action is a command to change the state when an event is triggered.
+Middleware: Middleware is a mediator between the action and reducer. Its purpose is to intercept the actions before it reaches the reducer.
+Reducer: Reducer changes the state of the application based on the action triggered. Reducer is a function that accepts action and current state and modifies the current state by creating a copy of it based on the action.
+Store: Store is responsible for managing the entire state of the application. State management is centralized in Redux. Action will be dispatched to the store using the dispatch method of the store.
+Redux Data Flow explained with Login as an example
+
+Let us observe the Redux data flow by considering Login as an example. The Login form is represented by the Login component.
+
+When the user clicks on the login button, the action is dispatched. 
+The Action reaches an action creator that returns an action. Action object contains action type and payload information (if required)
+The action reaches Reducer which modifies the state
+If any operation needs to be performed before modifying state then action reaches middleware first and then reaches reducer
+Reducer updates the modified state to the store 
+React components get the updated state from the store.
+
+Forbidden in Reducers
+
+Mutating the arguments passed.
+Performing side effects like API calls, AJAX call, etc.
+Calling other non-pure functions (Ex: date.now(), Math.random()).
+
+Store Methods
+
+1. getState(): This method can be used to get the current state from the store.
+2. dispatch(action): React components should use this method to dispatch an action whenever an event occurs within the component. This method dispatches an action and then the reducer takes care of updating the state
+3. subscribe(listener): Used for registering the listeners
+
+mapStateToProps: This function helps in transforming the current state present in the redux store as props and then the same is passed to its corresponding presentational component.
+
+mapDispatchToProps: This function is used by container components to dispatch actions. The mapDispatchToProps() function accepts the dispatch() method as an argument and returns a callback. The callback returned from the mapDispatchToProps function can be injected into presentational components as props.
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Best Practices
+
+Node js latest version should be installed
+For better readability, JSX could be used to create React elements
+Identify the number of stateful components required in your application
+Always try to minimize the number of stateful components as much as possible
+Use lifecycle methods appropriately for fetching data from the server for the initial loading of an application, for avoiding unnecessary re-rendering and for the memory cleanup
+In most cases, using controlled components to implement forms is recommended
+Styles can be applied using CSS and react-bootstrap
+
+Naming conventions:
+
+React components name should be in PascalCasing
+Event handlers name should be in camelCasing

@@ -1,0 +1,21 @@
+CaseStudy Deployement:
+
+npm install json-server -g
+json-server --watch db.json
+npm start
+
+Creation of react app:
+
+npm install -g create-react-app
+create-react-app my-app
+
+go to created react app and use the command in cmd:
+
+npm start
+
+
+Alternative:
+
+React application can also be created using create-react-app using the below command :
+npx create-react-app my-app
+where "my-app" is the name of the application
