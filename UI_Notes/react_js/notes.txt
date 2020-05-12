@@ -260,7 +260,7 @@ useContext()
 useEffect():
 
 1. If nothing is passed as second paremeter, content innside the function is called at every update including first time.
-2. If empty array is passed as second parameter, content inside is called only once at mountng and act as componentDidMount Method.
+2. If empty array is passed as second parameter, content inside is called only once at mounting and act as componentDidMount Method.
 3. If array is passed as second parameter, content is invoked only when the change is made in elements which are present inside the passed array.
 
 In class based components, contextType property is used to consume context whereas  in functional components we use ThemeContext.Consumer but it sometimes seems complex.
