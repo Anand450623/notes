@@ -1,0 +1,155 @@
+[pig_User001@pig_trngsrvr01 ~]cat > WordCount.pig
+lines = LOAD 'trng_HDFS/SampleFile.txt' as (line);
+All_words = FOREACH lines generate FLATTEN(TOKENIZE(line)) as word;
+combined = GROUP All_words BY word;
+countedWords = FOREACH combined GENERATE group, COUNT(All_words);
+DUMP countedWords ;
+
+data = LOAD 'student.tsv' as (Rollno:int, Name:chararray) using PigStorage(',')
+
+Retrieve only Training unit employees using FILTER operator
+grunt> Training = FILTER Employee_data BY $7=='Training';
+
+Remove duplicate courses entry using DISTINCT operator
+grunt> Training_Rec = DISTINCT Training;
+
+Retrieve only EmpNo, EmpName, Skill, Unit and TrackID using FOREACH .. GENERATE operator
+grunt> Emp_skill = FOREACH Training_Rec GENERATE $0, $1, $5, $7, $9;
+
+Note: $0, $1, $5, $7 and $9 are referencing field notation for the required columns 
+
+LOAD, STORE, DUMP
+
+Arrange the data based on salary column using ORDER BY operator
+grunt> Training_ord = ORDER Training_Rec BY $8 DESC;
+
+Retrieve only 10 records using LIMIT operator
+grunt> Emp_10 = LIMIT Training_ord 10;
+
+Combine Training and Emp_skill relations using UNION operator
+grunt> Emp_training = UNION Training, Emp_skill;
+
+Create multiple relation by splitting Employee_data relation based on Unit value using SPLIT operator
+grunt> SPLIT Employee_data INTO HR_Emp IF(Unit=='Human Resources'), Training_Emp IF(Unit=='Training'), TS_Emp IF(Unit=='Tech Support');
+
+Group the data of Employee_data based on unit using GROUP operator
+grunt> Emp_Unit_grp = GROUP Employee_data BY $7;
+
+Join the data of Employee_data and Track_data based on TrackID using JOIN operator
+grunt> Emp_track = JOIN Employee_data BY $9, Track_data BY $0;
+
+Group the data of Employee_data and Track_data based on TrackID using COGROUP operator
+grunt> Emp_track_cgrp = COGROUP Employee_data BY $9, Track_data BY $0;
+
+Display the content of Emp_track relation
+grunt> DUMP Emp_track;
+
+Verify the schema information of Employee_data relation
+grunt> DESCRIBE  Employee_data;
+
+Retrieve the execution plan of Emp_skill relation
+grunt> EXPLAIN Emp_skill;
+
+Retrieve the step by step execution of Emp_unit_grp relation
+grunt> ILLUSTRATE Emp_Unit_grp;
+
+grunt> Employee_age = FOREACH Employee_data GENERATE $3,(
+                      CASE $3%2
+                            WHEN 0 THEN 'Even_age'
+                            WHEN 1 THEN 'Odd_age'
+                      END   
+                      );
+
+In the below sample TrackID is converted from bytearray data type to chararray. 
+grunt> Track_data = LOAD 'TrackDetails.tsv' as (TrackID, TrackName, TrackDescription);
+ 
+Covert the datatype using Cast operator.
+grunt> cast_track = FOREACH Track_data GENERATE (chararray)$0;
+
+In the below sample, filter the employee with age greater than 30 using Comparison operator.
+grunt> Emp_Filter = FILTER Employee_data BY age > 30;
+
+To Load the file into pig environment, execute the below script
+grunt> Track_data = LOAD 'TrackDetails.tsv' as (TrackID, TrackName, TrackDescription); 
+
+To construct a relation in tuple datatype
+grunt> Track_tuple = FOREACH Track_data GENERATE(TrackID, TrackName, TrackDescription);
+ 
+To verify the schema
+grunt> DESCRIBE Track_tuple;
+Track_tuple: {org.apache.pig.builtin.totuple_TrackDescription_7: (TrackID: bytearray,TrackName: bytearray,TrackDescription: bytearray)}
+
+https://lex.infosysapps.com/viewer/web-module/lex_auth_012761560330518528584?collectionId=lex_auth_012762341018148864987&collectionType=Course&viewMode=START
+
+
+Functions in Pig can be categorized in four groups :
+
+Eval function 
+
+Takes one or more expressions and returns another expression as result
+Aggregate functions like Max, Min, Avg, Count etc. comes under this category
+To create User Defined eval functions, implement the org.apache.pig.EvalFunc abstract class
+
+Filter Function
+
+Filter functions are special eval functions that return a boolean response
+The only built-in filter function available is IsEmpty
+Filter functions are mostly used in conjunction with the FILTER operator
+To create user defined filter function implement the org.apache.pig.FilterFunc abstract class
+
+Load Function
+
+Load function is used in conjunction with Pig's LOAD operator
+Specifies how to load data from different sources
+To create user defined filter function implement the org.apache.pig.LoadFunc abstract class
+
+Store Function
+
+Used in conjunction with the STORE operator
+Specifies how to save the contents of a relation in some format to an external store or to HDFS 
+To create user defined filter function implement the org.apache.pig.StoreFunc abstract class
+
+
+Requirement : Compute the average of salary for each unit
+
+Load the file into Pig environment, issue the below LOAD command
+grunt> Employee_data = LOAD 'EmployeeDetails.tsv' as (EmpNo:int, EmpName:chararray, MailID:chararray,age:int, Location:map[chararray], Skill:tuple(SoftSkill:chararray,HardSkill:chararray), Qualification:bag{Qualification:tuple(percentage:chararray)}, Unit:chararray, salary:long, TrackID: chararray);
+
+Select only required fields using FOREACH, GENERATE operator as below
+grunt> Employee = FOREACH Employee_data GENERATE Unit, salary;
+
+Group course particulars based on course code using GROUP operator as below
+grunt> Employee_group = GROUP Employee BY $0;
+ 
+Compute the average training hours of each courses using AVG function in a FOREACH, GENERATE statement as below
+AVG is one of the in-built EVAL functions in Pig
+Used to compute the average of values in a field
+grunt> Salary_avg = FOREACH Employee_group GENERATE group, AVG(Employee.salary);
+ 
+Display the output using DUMP operator as below
+grunt> DUMP Salary_avg;
+
+(Training,31025.0)
+(Tech Support,30000.0)
+(Human Resources,34750.0)
+
+When a UDF is created , it has to be registered using the 'register' command so that Pig can refer to it later when someone invokes it as a builtin function. One can use the UDFs created by other users also.
+
+Users can contribute UDFs as repositories and can be made available to other users as .jar files. One such popular user-contributed UDF is Piggybank . It comes packaged with Pig distribution. Functions in Piggybank are not built in functions. One needs to register Piggybank .jar before using it.
+
+Another rich library of Pig UDFs is Apache DataFu . It includes a set of general utility functions along with a set of functions for computing basic statistics, sampling , estimation, hashing etc,.
+
+Below are some common steps to be followed while creating UDFs.
+
+Steps to create UDFs:
+
+Create a Java project in Eclipse
+Add the Pig distribution jars to the class path
+Create a class that implements the corresponding abstract class related to the type of function to be created
+Convert the class to a jar file
+Register the jar file with in Grunt Shell ( command => Register filename.jar)
+In case of script, add Register command at the beginning of the script 
+
+Define UDFs
+
+DEFINE operator provides an alias to UDF so that user need not use the package information instead use the alias name whenever needed. User can also provide constructor arguments to UDF using DEFINE operator.
